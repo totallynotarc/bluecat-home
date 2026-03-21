@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="text">
+        <h1 class="title">Hi!</h1>
+        <h1 class="bottom">I'm @bluecat1401 on Scratch.</h1>
+    </div>
+    <img class="popup" src="bluecat.png" alt="image">
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Rubik', sans-serif;
+        background-color: rgb(122, 146, 255);
+        user-select: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0px;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .text {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 3rem;
+        color: white;
+        margin: 0;
+    }
+
+    .bottom {
+        margin: 0;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .title, .bottom {
+        animation:
+            fadeIn 0.8s ease,
+            moveUp 0.8s ease 0.8s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes moveUp {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-40px);
+        }
+    }
+</style>
