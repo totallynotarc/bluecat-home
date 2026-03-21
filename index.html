@@ -6,72 +6,131 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bluecat Home // Made by Arc</title>
 </head>
 <body>
     <div class="text">
         <h1 class="title">Hi!</h1>
         <h1 class="bottom">I'm @bluecat1401 on Scratch.</h1>
+
+        <a href="https://scratch.mit.edu/users/bluecat1401/" target="_blank">
+            <img class="popup" src="bluecat.png" alt="Bluecat profile">
+        </a>
     </div>
-    <img class="popup" src="bluecat.png" alt="image">
+
+    <div class="notification">
+        <p>The following website was made by Arc!</p>
+    </div>
 </body>
 </html>
 
 <style>
-    body {
-        font-family: 'Rubik', sans-serif;
-        background-color: rgb(122, 146, 255);
-        user-select: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0px;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-    }
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0px 15px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateX(100px);
+    animation: notifIn 0.6s ease 1.2s forwards;
+}
 
-    .text {
-        text-align: center;
+@keyframes notifIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
     }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-    .title {
-        font-size: 3rem;
-        color: white;
-        margin: 0;
-    }
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: rgb(122, 146, 255);
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
 
-    .bottom {
-        margin: 0;
-        font-size: 1.5rem;
-        color: white;
-    }
+.text {
+    text-align: center;
+}
 
-    .title, .bottom {
-        animation:
-            fadeIn 0.8s ease,
-            moveUp 0.8s ease 0.8s;
-        animation-fill-mode: both;
-    }
+.title {
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
+.bottom {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
 
-    @keyframes moveUp {
-        from {
-            transform: translateY(0);
-        }
-        to {
-            transform: translateY(-40px);
-        }
+.title, .bottom {
+    animation:
+        fadeIn 0.8s ease,
+        moveUp 0.8s ease 0.8s;
+    animation-fill-mode: both;
+}
+
+.popup {
+    width: 120px;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: popIn 0.5s ease 1s forwards;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.popup:hover {
+    transform: scale(0.8);
+}
+
+.popup:active {
+    transform: scale(0.72);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(0.7);
+    }
+}
 </style>
