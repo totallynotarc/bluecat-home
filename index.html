@@ -1,136 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluecat Home // Made by Arc</title>
-</head>
-<body>
-    <div class="text">
-        <h1 class="title">Hi!</h1>
-        <h1 class="bottom">I'm @bluecat1401 on Scratch.</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluecat Portfolio</title>
+    
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- React and ReactDOM v18 CDN (Stable UMD) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    
+    <!-- Babel Standalone for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-        <a href="https://scratch.mit.edu/users/bluecat1401/" target="_blank">
-            <img class="popup" src="bluecat.png" alt="Bluecat profile">
-        </a>
-    </div>
+    <style type="text/css">
+      @theme {
+        --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes slideUpPill {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+      }
+      
+      .animate-slide-up-pill {
+        animation: slideUpPill 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+      
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+      .delay-500 { animation-delay: 0.5s; }
+      .delay-1000 { animation-delay: 1s; }
+      
+      .opacity-0 { opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
 
-    <div class="notification">
-        <p>The following website was made by Arc!</p>
-    </div>
-</body>
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      function App() {
+        const scratchUrl = 'https://scratch.mit.edu/users/bluecat1401/';
+        const chatUrl = 'https://scratch.mit.edu/projects/1224950372/';
+        const youtubeUrl = 'https://www.youtube.com/@bluecatyeeps';
+
+        return (
+          <div className="min-h-screen bg-[#92C5F9] flex flex-col items-center justify-center font-sans overflow-hidden select-none">
+            <div className="text-center mb-32 px-4 opacity-0 animate-slide-up">
+              <img 
+                src="Group 2.png"
+                alt="Hi. I'm bluecat."
+                className="max-w-[600px] w-full h-auto pointer-events-none"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            <div className="fixed bottom-12 flex flex-col items-center opacity-0 animate-slide-up-pill delay-300">
+              <a
+                href={scratchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="z-20 -mb-10 transition-transform hover:scale-110 hover:-translate-y-1 active:scale-95"
+              >
+                <img 
+                  src="Rectangle 1.png" 
+                  alt="Scratch" 
+                  className="w-20 h-20 drop-shadow-lg"
+                  referrerPolicy="no-referrer"
+                />
+              </a>
+
+              <div className="relative flex items-center justify-center">
+                <img 
+                  src="Group 4.png" 
+                  alt="" 
+                  className="w-[380px] h-auto drop-shadow-xl"
+                  referrerPolicy="no-referrer"
+                />
+                
+                <div className="absolute inset-0 flex items-center justify-between px-10 pt-2">
+                  <a
+                    href={youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center transition-transform hover:scale-125 active:scale-90"
+                  >
+                    <img src="image 4.png" alt="YouTube" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  </a>
+
+                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-sm -mt-1 transition-transform hover:scale-110">
+                    <img 
+                      src="image 2.png" 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+
+                  <a
+                    href={chatUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center transition-transform hover:scale-125 active:scale-90"
+                  >
+                    <img src="image 3.png" alt="Chat" className="w-full h-auto" referrerPolicy="no-referrer" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="fixed top-6 right-6 flex items-center bg-white rounded-full px-4 py-2 shadow-md border border-white/20 opacity-0 animate-fade-in delay-1000">
+              <img src="Group 3.png" alt="Made by Arc" className="h-4 w-auto mr-3" referrerPolicy="no-referrer" />
+              <button className="hover:opacity-70 transition-opacity">
+                <img src="Group 1.png" alt="Close" className="w-4 h-4" referrerPolicy="no-referrer" />
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  </body>
 </html>
-
-<style>
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    color: white;
-    background: rgba(255, 255, 255, 0.12);
-    padding: 0px 15px;
-    border-radius: 10px;
-    opacity: 0;
-    transform: translateX(100px);
-    animation: notifIn 0.6s ease 1.2s forwards;
-}
-
-@keyframes notifIn {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-body {
-    font-family: 'Rubik', sans-serif;
-    background-color: rgb(122, 146, 255);
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0px;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-.text {
-    text-align: center;
-}
-
-.title {
-    font-size: 3rem;
-    color: white;
-    margin: 0;
-}
-
-.bottom {
-    margin: 0;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.title, .bottom {
-    animation:
-        fadeIn 0.8s ease,
-        moveUp 0.8s ease 0.8s;
-    animation-fill-mode: both;
-}
-
-.popup {
-    width: 120px;
-    opacity: 0;
-    transform: scale(0.7);
-    animation: popIn 0.5s ease 1s forwards;
-    transition: 0.2s ease;
-    cursor: pointer;
-}
-
-.popup:hover {
-    transform: scale(0.8);
-}
-
-.popup:active {
-    transform: scale(0.72);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes moveUp {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.1);
-    }
-    to {
-        opacity: 1;
-        transform: scale(0.7);
-    }
-}
-</style>
