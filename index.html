@@ -4,145 +4,265 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bluecat Portfolio</title>
-    
-    <!-- Tailwind CSS v4 CDN -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    
-    <!-- React and ReactDOM v18 CDN (Stable UMD) -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    
-    <!-- Babel Standalone for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      :root {
+        --bg: #92c5f9;
+        --design-width: 1920;
+        --design-height: 1080;
+      }
 
-    <style type="text/css">
-      @theme {
-        --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      * {
+        box-sizing: border-box;
       }
-      
-      @keyframes slideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        background: var(--bg);
       }
-      
-      @keyframes slideUpPill {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
+
+      body {
+        display: grid;
+        place-items: center;
       }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+
+      .stage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg);
+        overflow: hidden;
+        user-select: none;
       }
-      
-      .animate-slide-up {
-        animation: slideUp 0.8s ease-out forwards;
+
+      .asset {
+        position: absolute;
+        display: block;
+        height: auto;
+        max-width: none;
+        -webkit-user-drag: none;
       }
-      
-      .animate-slide-up-pill {
-        animation: slideUpPill 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+
+      .hero {
+        left: 43.28125%;
+        top: 41.944444%;
+        width: 13.4375%;
+        min-width: 220px;
+        transform: translate(-50%, -50%);
       }
-      
-      .animate-fade-in {
-        animation: fadeIn 1s ease-out forwards;
+
+      .nav-pill {
+        left: 50%;
+        top: 92.222222%;
+        width: 25%;
+        min-width: 360px;
+        transform: translate(-50%, -50%);
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.08));
       }
-      
-      .delay-200 { animation-delay: 0.2s; }
-      .delay-300 { animation-delay: 0.3s; }
-      .delay-500 { animation-delay: 0.5s; }
-      .delay-1000 { animation-delay: 1s; }
-      
-      .opacity-0 { opacity: 0; }
+
+      .scratch-button {
+        position: absolute;
+        left: 50%;
+        top: 85.185185%;
+        width: 4.583333%;
+        min-width: 72px;
+        transform: translate(-50%, -50%);
+        transition: transform 140ms ease;
+      }
+
+      .scratch-button:hover,
+      .icon-link:hover,
+      .profile-link:hover,
+      .badge-close:hover {
+        transform: translate(-50%, -50%) scale(1.04);
+      }
+
+      .icon-link,
+      .profile-link,
+      .scratch-button,
+      .badge-close {
+        cursor: pointer;
+      }
+
+      .youtube-link {
+        position: absolute;
+        left: 48.1510417%;
+        top: 93.101852%;
+        width: 2.34375%;
+        min-width: 38px;
+        transform: translate(-50%, -50%);
+        transition: transform 140ms ease;
+      }
+
+      .chat-link {
+        position: absolute;
+        left: 51.09375%;
+        top: 93.148148%;
+        width: 2.1354167%;
+        min-width: 36px;
+        transform: translate(-50%, -50%);
+        transition: transform 140ms ease;
+      }
+
+      .profile-link {
+        position: absolute;
+        left: 50%;
+        top: 93.055556%;
+        width: 2.96875%;
+        min-width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        transform: translate(-50%, -50%);
+        transition: transform 140ms ease;
+      }
+
+      .profile-link img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 50%;
+      }
+
+      .made-by-arc {
+        position: absolute;
+        left: 93.046875%;
+        top: 3.935185%;
+        width: 10.46875%;
+        min-width: 190px;
+        transform: translate(-50%, -50%);
+      }
+
+      .badge-close {
+        position: absolute;
+        left: 97.369792%;
+        top: 3.935185%;
+        width: 1.8229167%;
+        min-width: 34px;
+        transform: translate(-50%, -50%);
+        background: transparent;
+        border: 0;
+        padding: 0;
+      }
+
+      .badge-close img {
+        width: 100%;
+        display: block;
+      }
+
+      .badge-close:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          min-width: 190px;
+          width: 32vw;
+          top: 40%;
+        }
+
+        .nav-pill {
+          width: 78vw;
+          min-width: 300px;
+          top: 90%;
+        }
+
+        .scratch-button {
+          width: 18vw;
+          min-width: 64px;
+          top: 82.5%;
+        }
+
+        .youtube-link {
+          left: 43.5%;
+          top: 90.9%;
+          width: 8vw;
+          min-width: 34px;
+        }
+
+        .profile-link {
+          width: 11vw;
+          min-width: 44px;
+          top: 90.8%;
+        }
+
+        .chat-link {
+          left: 56.4%;
+          top: 90.9%;
+          width: 8vw;
+          min-width: 34px;
+        }
+
+        .made-by-arc {
+          left: 69%;
+          top: 5.5%;
+          width: 28vw;
+          min-width: 155px;
+        }
+
+        .badge-close {
+          left: 91.5%;
+          top: 5.5%;
+          width: 5vw;
+          min-width: 28px;
+        }
+      }
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <main class="stage" aria-label="bluecat portfolio homepage">
+      <img class="asset hero" src="Group 2.png" alt="Hi. I'm bluecat." />
 
-    <script type="text/babel">
-      const { useState, useEffect } = React;
+      <a
+        class="scratch-button"
+        href="https://scratch.mit.edu/users/bluecat1401/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Scratch profile"
+      >
+        <img class="asset" style="position: static; width: 100%;" src="Rectangle 1.png" alt="Scratch" />
+      </a>
 
-      function App() {
-        const scratchUrl = 'https://scratch.mit.edu/users/bluecat1401/';
-        const chatUrl = 'https://scratch.mit.edu/projects/1224950372/';
-        const youtubeUrl = 'https://www.youtube.com/@bluecatyeeps';
+      <img class="asset nav-pill" src="Group 4.png" alt="" aria-hidden="true" />
 
-        return (
-          <div className="min-h-screen bg-[#92C5F9] flex flex-col items-center justify-center font-sans overflow-hidden select-none">
-            <div className="text-center mb-32 px-4 opacity-0 animate-slide-up">
-              <img 
-                src="Group 2.png"
-                alt="Hi. I'm bluecat."
-                className="max-w-[600px] w-full h-auto pointer-events-none"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+      <a
+        class="icon-link youtube-link"
+        href="https://www.youtube.com/@bluecatyeeps"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open YouTube channel"
+      >
+        <img class="asset" style="position: static; width: 100%;" src="image 4.png" alt="YouTube" />
+      </a>
 
-            <div className="fixed bottom-12 flex flex-col items-center opacity-0 animate-slide-up-pill delay-300">
-              <a
-                href={scratchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="z-20 -mb-10 transition-transform hover:scale-110 hover:-translate-y-1 active:scale-95"
-              >
-                <img 
-                  src="Rectangle 1.png" 
-                  alt="Scratch" 
-                  className="w-20 h-20 drop-shadow-lg"
-                  referrerPolicy="no-referrer"
-                />
-              </a>
+      <a
+        class="profile-link"
+        href="https://scratch.mit.edu/users/bluecat1401/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open profile"
+      >
+        <img src="image 2.png" alt="Profile picture" />
+      </a>
 
-              <div className="relative flex items-center justify-center">
-                <img 
-                  src="Group 4.png" 
-                  alt="" 
-                  className="w-[380px] h-auto drop-shadow-xl"
-                  referrerPolicy="no-referrer"
-                />
-                
-                <div className="absolute inset-0 flex items-center justify-between px-10 pt-2">
-                  <a
-                    href={youtubeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center transition-transform hover:scale-125 active:scale-90"
-                  >
-                    <img src="image 4.png" alt="YouTube" className="w-full h-auto" referrerPolicy="no-referrer" />
-                  </a>
+      <a
+        class="icon-link chat-link"
+        href="https://scratch.mit.edu/projects/1224950372/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open chat project"
+      >
+        <img class="asset" style="position: static; width: 100%;" src="image 3.png" alt="Chat" />
+      </a>
 
-                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/50 shadow-sm -mt-1 transition-transform hover:scale-110">
-                    <img 
-                      src="image 2.png" 
-                      alt="Profile" 
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
+      <img class="asset made-by-arc" src="Group 3.png" alt="Made by Arc" />
 
-                  <a
-                    href={chatUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center transition-transform hover:scale-125 active:scale-90"
-                  >
-                    <img src="image 3.png" alt="Chat" className="w-full h-auto" referrerPolicy="no-referrer" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="fixed top-6 right-6 flex items-center bg-white rounded-full px-4 py-2 shadow-md border border-white/20 opacity-0 animate-fade-in delay-1000">
-              <img src="Group 3.png" alt="Made by Arc" className="h-4 w-auto mr-3" referrerPolicy="no-referrer" />
-              <button className="hover:opacity-70 transition-opacity">
-                <img src="Group 1.png" alt="Close" className="w-4 h-4" referrerPolicy="no-referrer" />
-              </button>
-            </div>
-          </div>
-        );
-      }
-
-      const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(<App />);
-    </script>
+      <button class="badge-close" type="button" aria-label="Close badge">
+        <img src="Group 1.png" alt="Close" />
+      </button>
+    </main>
   </body>
 </html>
